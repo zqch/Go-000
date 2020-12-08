@@ -1,4 +1,9 @@
 # Concurrency
+## 代码作业
+> 基于 errgroup 实现一个 http server 的启动和关闭 ，以及 linux signal 信号的注册和处理，要保证能够一个退出，全部注销退出
+
+见 [main.go](main.go)
+
 ## 使用 goroutine 的姿势
 golang 使用 goroutine 来并发，使用 goroutine 时需要注意:
 
@@ -143,6 +148,7 @@ func fanOut(input <-chan string, outputs []chan string) {
 
 ## 并发的高阶姿势
 **errgroup**
+
 用于将多个小任务并发执行，底层基于 WaitGroup 实现
 
 ```go
@@ -178,4 +184,5 @@ if err := g.Wait(); err == nil {
 - 没有对 panic 进行 recover
 
 **SingleFlight**
+
 用于在多个 goroutine 同时调用同一个函数时，合并成一个调用，将这一次调用的结果返回给同时调用的其他 goroutine。可以用来解决缓存击穿
