@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	signal "github.com/zqch/Go-000/Week04/pkg/signal"
+	"github.com/zqch/Go-000/Week04/pkg/signal"
 )
 
 var exitFuncs []func()
@@ -18,6 +18,7 @@ func init() {
 }
 
 func doExitFuncs() {
+	// TODO: exit timeout
 	for _, f := range exitFuncs {
 		defer func() {
 			if err := recover(); err != nil {
